@@ -3,11 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ClinicManagement.Models
 {
-    public class Doctor : BaseModel
+    public class Staff : BaseModel
     {
 
         public int Id { get; set; }
-        public string speciality { get; set; }
-  
+        public string position { get; set; }
     }
 }
