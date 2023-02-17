@@ -18,6 +18,8 @@ builder.Services.AddIdentityCore<ApplicationUser>()
 
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 builder.Services.AddScoped<IAuthManager, AuthManager>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

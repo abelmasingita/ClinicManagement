@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ClinicManagement.Data.Dto.Doctor;
 using ClinicManagement.Data.Dto.User;
 using ClinicManagement.Models;
 
@@ -10,6 +11,8 @@ namespace ClinicManagement.Configurations
         public MappingProfiles()
         {
             CreateMap<ApplicationUser, RegisterDto>().ReverseMap();
+
+            CreateMap<Doctor, GetDoctorDto>().ReverseMap();
         }
 
     }
