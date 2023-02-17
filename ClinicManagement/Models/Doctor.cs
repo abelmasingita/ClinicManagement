@@ -7,6 +7,10 @@ namespace ClinicManagement.Models
     {
 
         public string speciality { get; set; }
-  
+
+        [ForeignKey("UserId")]
+        public string? UserId { get; set; }
+        public ApplicationUser User { get; set; }
+
     }
 }

@@ -9,5 +9,8 @@ namespace ClinicManagement.Models
         public string dateOfBirth { get; set; }
         public string gender { get; set; }
 
+        [ForeignKey("UserId")]
+        public string? UserId { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

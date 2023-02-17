@@ -1,4 +1,6 @@
 using ClinicManagement.Data;
+using ClinicManagement.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddDbContext<ClinicManagementDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ClinicManagementConnStr")));
+
+builder.Services.AddIdentityCore<ApplicationUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ClinicManagementDbContext>();
 
 
 builder.Services.AddControllers();
