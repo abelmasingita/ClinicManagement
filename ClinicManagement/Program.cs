@@ -1,5 +1,8 @@
+using ClinicManagement.Configurations;
+using ClinicManagement.Contracts;
 using ClinicManagement.Data;
 using ClinicManagement.Models;
+using ClinicManagement.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +16,8 @@ builder.Services.AddIdentityCore<ApplicationUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ClinicManagementDbContext>();
 
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
+builder.Services.AddScoped<IAuthManager, AuthManager>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
