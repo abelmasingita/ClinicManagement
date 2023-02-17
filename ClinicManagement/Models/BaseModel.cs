@@ -4,6 +4,7 @@ namespace ClinicManagement.Models
 {
     public class BaseModel
     {
+        public int Id { get; set; }
         [Required]
         public string first_name { get; set; }
 

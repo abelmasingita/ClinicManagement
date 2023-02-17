@@ -5,8 +5,6 @@ namespace ClinicManagement.Models
 {
     public class Staff : BaseModel
     {
-
-        public int Id { get; set; }
         public string position { get; set; }
     }
 }
