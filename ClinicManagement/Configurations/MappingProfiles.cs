@@ -13,6 +13,8 @@ namespace ClinicManagement.Configurations
             CreateMap<ApplicationUser, RegisterDto>().ReverseMap();
 
             CreateMap<Doctor, GetDoctorDto>().ReverseMap();
+            CreateMap<Doctor, BaseDoctorDto>().ReverseMap();
+            CreateMap<Doctor, CreateDoctorDto>().ReverseMap(); 
         }
 
     }
