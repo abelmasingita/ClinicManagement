@@ -1,25 +1,23 @@
 ﻿using AutoMapper;
 using ClinicManagement.Contracts;
 using ClinicManagement.Data.Dto.Doctor;
+using ClinicManagement.Data.Dto.Patient;
 using ClinicManagement.Models;
-using Microsoft.AspNetCore.Authorization;
+using ClinicManagement.Repository;
 using Microsoft.AspNetCore.Mvc;
-
-
 
 namespace ClinicManagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-//[Authorize]
-    public class DoctorController : ControllerBase
+    public class PatientController : ControllerBase
     {
-        private readonly IDoctorRepository _doctorRepository;
+        private readonly IPatientRepository _patientRepository;
         private readonly IMapper _mapper;
 
-        public DoctorController(IDoctorRepository doctorRepository, IMapper mapper)
+        public PatientController(IPatientRepository patientRepository, IMapper mapper)
         {
-            _doctorRepository = doctorRepository;
+            _patientRepository = patientRepository;
             _mapper = mapper;
         }
 
@@ -27,41 +25,41 @@ namespace ClinicManagement.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetDoctors()
+        public async Task<ActionResult> GetPatients()
         {
-            var doctors = _mapper.Map<List<DoctorDto>>(await _doctorRepository.GetAllAsync());
+            var patients = _mapper.Map<List<PatientDto>>(await _patientRepository.GetAllAsync());
 
-            return Ok(doctors);
+            return Ok(patients);
         }
 
-        [HttpGet("doctorId")]
+        [HttpGet("patientId")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<DoctorDto>> GetDoctor([FromQuery] int doctorId)
+        public async Task<ActionResult<PatientDto>> GetPatient([FromQuery] int patientId)
         {
-            if (!await _doctorRepository.Exists(doctorId))
+            if (!await _patientRepository.Exists(patientId))
             {
                 return NotFound();
             }
 
-            var doctor = await _doctorRepository.GetAsync(doctorId);
+            var doctor = await _patientRepository.GetAsync(patientId);
 
             if (doctor == null)
             {
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<DoctorDto>(doctor));
+            return Ok(_mapper.Map<PatientDto>(doctor));
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> CreateDoctor([FromBody] CreateDoctorDto createDoctorDto)
+        public async Task<ActionResult> CreatePatient([FromBody] CreatePatientDto createPatientDto)
         {
-            if (createDoctorDto == null)
+            if (createPatientDto == null)
             {
                 return BadRequest();
             }
@@ -69,43 +67,42 @@ namespace ClinicManagement.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var doctor = await _doctorRepository.AddAsync(_mapper.Map<Doctor>(createDoctorDto));
-            return Ok(doctor);
+            var patient = await _patientRepository.AddAsync(_mapper.Map<Patient>(createPatientDto));
+            return Ok(patient);
         }
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> UpdateDoctor(int doctorId, [FromBody] BaseDoctorDto updateDoctorDto)
+        public async Task<IActionResult> UpdatePatient(int patientId, [FromBody] BasePatientDto updatePatientDto)
         {
-            if (updateDoctorDto == null)
+            if (updatePatientDto == null)
             {
                 return BadRequest(ModelState);
             }
-            if (!await _doctorRepository.Exists(doctorId))
+            if (!await _patientRepository.Exists(patientId))
             {
                 return NotFound();
             }
-            var doctor = await _doctorRepository.GetAsync(doctorId);
-            if (doctor == null)
+            var patient = await _patientRepository.GetAsync(patientId);
+            if (patient == null)
             {
                 return NotFound();
             }
-            await _doctorRepository.UpdateAsync(_mapper.Map(updateDoctorDto, doctor));
+            await _patientRepository.UpdateAsync(_mapper.Map(updatePatientDto, patient));
 
             return NoContent();
         }
-
 
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> DeleteDoctor(int doctorId)
+        public async Task<IActionResult> DeletePatient(int patientId)
         {
-  
-            if (!await _doctorRepository.Exists(doctorId))
+
+            if (!await _patientRepository.Exists(patientId))
             {
                 return NotFound();
             }
@@ -113,7 +110,7 @@ namespace ClinicManagement.Controllers
             {
                 return BadRequest();
             }
-            await _doctorRepository.DeleteAsync(doctorId);
+            await _patientRepository.DeleteAsync(patientId);
 
             return NoContent();
         }

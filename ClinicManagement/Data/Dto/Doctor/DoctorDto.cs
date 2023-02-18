@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClinicManagement.Data.Dto.Doctor
 {
-    public class GetDoctorDto : BaseDoctorDto
+    public class DoctorDto : BaseDoctorDto
     {
         public int Id { get; set; }
         [ForeignKey("UserId")]
