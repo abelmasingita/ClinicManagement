@@ -17,8 +17,8 @@ namespace ClinicManagement.Data.Configurations
                 contact = "074 226 1505",
                 email = "hlongwaniab@gmail.com",
                 speciality = "Children",
-                Id = 1,
-                UserId = "1"
+                Id = "doctor1",
+                UserId = "user1"
 
             },
             new Doctor
@@ -28,8 +28,8 @@ namespace ClinicManagement.Data.Configurations
                 contact = "074 226 1505",
                 email = "abelmasingita9@gmail.com",
                 speciality = "Teeth",
-                Id = 2,
-                UserId = "2"
+                Id = "doctor2",
+                UserId = "user2"
 
             },
             new Doctor
@@ -39,8 +39,8 @@ namespace ClinicManagement.Data.Configurations
                 contact = "074 226 1505",
                 email = "abelmasingita9@gmail.com",
                 speciality = "Eyes",
-                Id = 3,
-                UserId = "3"
+                Id = "doctor3",
+                UserId = "user3"
             });
 
         }

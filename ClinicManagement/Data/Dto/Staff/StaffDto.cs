@@ -2,6 +2,6 @@
 {
     public class StaffDto : BaseStaffDto
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
     }
 }

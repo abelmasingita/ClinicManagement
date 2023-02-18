@@ -22,6 +22,10 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IStaffRepository, StaffRepository>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

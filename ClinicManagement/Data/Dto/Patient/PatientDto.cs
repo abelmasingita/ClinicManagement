@@ -5,7 +5,7 @@ namespace ClinicManagement.Data.Dto.Patient
 {
     public class PatientDto : BasePatientDto
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [ForeignKey("UserId")]
         public string? UserId { get; set; }

@@ -97,15 +97,15 @@ namespace ClinicManagement.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
+                            Id = "user1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "26bb3a1b-6927-443a-8189-027581f9763e",
+                            ConcurrencyStamp = "7ee812d9-f114-4578-a5b2-017f806a24e8",
                             Email = "admin@gamil.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "123456@clinic*",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e6397c6d-2f60-499a-93f1-b2bcb46a57d7",
+                            SecurityStamp = "2f4acbf7-65dd-4fc9-9ce5-ac9081a8b2e7",
                             TwoFactorEnabled = false,
                             UserName = "admin@gamil.com",
                             first_name = "Admin",
@@ -113,15 +113,15 @@ namespace ClinicManagement.Migrations
                         },
                         new
                         {
-                            Id = "2",
+                            Id = "user2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e8d8dae8-0ebd-422e-9570-626d16052bd1",
+                            ConcurrencyStamp = "c91a2dd1-66cf-4fc0-8a26-9d108dd702d2",
                             Email = "admin2@gamil.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "123456@clinic*",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0ee3ba84-982e-4447-b5bb-4fed5a177066",
+                            SecurityStamp = "b57d5381-dfc7-42e8-95b3-821413d6fdbe",
                             TwoFactorEnabled = false,
                             UserName = "admin2@gamil.com",
                             first_name = "Admin2",
@@ -129,15 +129,15 @@ namespace ClinicManagement.Migrations
                         },
                         new
                         {
-                            Id = "3",
+                            Id = "user3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c50c28a4-ae5c-4ef2-be4a-8db2f51c9e5f",
+                            ConcurrencyStamp = "57225d54-04a2-4cff-850b-d1eb26853b36",
                             Email = "admin3@gamil.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "123456@clinic*",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e3537ce0-93a3-4141-b1cd-0610811e89fb",
+                            SecurityStamp = "c5a57784-c14f-4853-b27f-d62043111efc",
                             TwoFactorEnabled = false,
                             UserName = "admin3gamil.com",
                             first_name = "Admin3",
@@ -147,17 +147,16 @@ namespace ClinicManagement.Migrations
 
             modelBuilder.Entity("ClinicManagement.Models.Appointment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("DoctorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
+                    b.Property<string>("PatientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("appointmentDate")
                         .IsRequired()
@@ -178,15 +177,41 @@ namespace ClinicManagement.Migrations
                     b.HasIndex("PatientId");
 
                     b.ToTable("Appointments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "app1",
+                            DoctorId = "doctor1",
+                            PatientId = "patient1",
+                            appointmentDate = "20040706",
+                            comment = "comments",
+                            status = "new"
+                        },
+                        new
+                        {
+                            Id = "app2",
+                            DoctorId = "doctor2",
+                            PatientId = "patient2",
+                            appointmentDate = "20040706",
+                            comment = "comments",
+                            status = "new"
+                        },
+                        new
+                        {
+                            Id = "app3",
+                            DoctorId = "doctor3",
+                            PatientId = "patient3",
+                            appointmentDate = "20040706",
+                            comment = "comments",
+                            status = "new"
+                        });
                 });
 
             modelBuilder.Entity("ClinicManagement.Models.Doctor", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -222,8 +247,8 @@ namespace ClinicManagement.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            UserId = "1",
+                            Id = "doctor1",
+                            UserId = "user1",
                             contact = "074 226 1505",
                             email = "hlongwaniab@gmail.com",
                             first_name = "Masingita",
@@ -232,8 +257,8 @@ namespace ClinicManagement.Migrations
                         },
                         new
                         {
-                            Id = 2,
-                            UserId = "2",
+                            Id = "doctor2",
+                            UserId = "user2",
                             contact = "074 226 1505",
                             email = "abelmasingita9@gmail.com",
                             first_name = "Abel",
@@ -242,8 +267,8 @@ namespace ClinicManagement.Migrations
                         },
                         new
                         {
-                            Id = 3,
-                            UserId = "3",
+                            Id = "doctor3",
+                            UserId = "user3",
                             contact = "074 226 1505",
                             email = "abelmasingita9@gmail.com",
                             first_name = "Moses",
@@ -254,11 +279,8 @@ namespace ClinicManagement.Migrations
 
             modelBuilder.Entity("ClinicManagement.Models.Patient", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -298,8 +320,8 @@ namespace ClinicManagement.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            UserId = "1",
+                            Id = "patient1",
+                            UserId = "user1",
                             contact = "074 226 1505",
                             dateOfBirth = "20010607",
                             email = "hlongwaniabb@gmail.com",
@@ -309,8 +331,8 @@ namespace ClinicManagement.Migrations
                         },
                         new
                         {
-                            Id = 2,
-                            UserId = "2",
+                            Id = "patient2",
+                            UserId = "user2",
                             contact = "074 226 1505",
                             dateOfBirth = "20010607",
                             email = "abelmasingita9@gmail.com",
@@ -320,8 +342,8 @@ namespace ClinicManagement.Migrations
                         },
                         new
                         {
-                            Id = 3,
-                            UserId = "3",
+                            Id = "patient3",
+                            UserId = "user3",
                             contact = "074 226 1505",
                             dateOfBirth = "20010607",
                             email = "abelmasingita9@gmail.com",
@@ -333,14 +355,12 @@ namespace ClinicManagement.Migrations
 
             modelBuilder.Entity("ClinicManagement.Models.Payment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AppointmentId")
-                        .HasColumnType("int");
+                    b.Property<string>("AppointmentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<double>("amount")
                         .HasColumnType("float");
@@ -362,21 +382,49 @@ namespace ClinicManagement.Migrations
                     b.HasIndex("AppointmentId");
 
                     b.ToTable("Payments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "payment1",
+                            AppointmentId = "app1",
+                            amount = 300.89999999999998,
+                            method = "method",
+                            paymentDate = "20010608",
+                            status = "paid"
+                        },
+                        new
+                        {
+                            Id = "payment2",
+                            AppointmentId = "app2",
+                            amount = 400.89999999999998,
+                            method = "method",
+                            paymentDate = "20010608",
+                            status = "paid"
+                        },
+                        new
+                        {
+                            Id = "payment3",
+                            AppointmentId = "app3",
+                            amount = 400.89999999999998,
+                            method = "method",
+                            paymentDate = "20010608",
+                            status = "paid"
+                        });
                 });
 
             modelBuilder.Entity("ClinicManagement.Models.Prescription", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("DoctorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
+                    b.Property<string>("PatientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("dosage")
                         .IsRequired()
@@ -401,15 +449,44 @@ namespace ClinicManagement.Migrations
                     b.HasIndex("PatientId");
 
                     b.ToTable("Prescriptions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "pre1",
+                            DoctorId = "doctor1",
+                            PatientId = "patient1",
+                            dosage = "1 evening",
+                            instructions = "prescription instructions",
+                            medicine = "Flue medicine",
+                            prescriptiobDate = "20030406"
+                        },
+                        new
+                        {
+                            Id = "pre2",
+                            DoctorId = "doctor2",
+                            PatientId = "patient2",
+                            dosage = "2 evening",
+                            instructions = "prescription instructions",
+                            medicine = "Flue medicine",
+                            prescriptiobDate = "20030406"
+                        },
+                        new
+                        {
+                            Id = "pre3",
+                            DoctorId = "doctor3",
+                            PatientId = "patient3",
+                            dosage = "3 evening",
+                            instructions = "prescription instructions",
+                            medicine = "Flue medicine",
+                            prescriptiobDate = "20030406"
+                        });
                 });
 
             modelBuilder.Entity("ClinicManagement.Models.Staff", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -445,8 +522,8 @@ namespace ClinicManagement.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            UserId = "1",
+                            Id = "staff1",
+                            UserId = "user1",
                             contact = "074 226 1505",
                             email = "hlongwaniab@gmail.com",
                             first_name = "Masingitaaa",
@@ -455,8 +532,8 @@ namespace ClinicManagement.Migrations
                         },
                         new
                         {
-                            Id = 2,
-                            UserId = "2",
+                            Id = "staff2",
+                            UserId = "user2",
                             contact = "074 226 1505",
                             email = "abelmasingita9@gmail.com",
                             first_name = "Abelll",
@@ -465,8 +542,8 @@ namespace ClinicManagement.Migrations
                         },
                         new
                         {
-                            Id = 3,
-                            UserId = "3",
+                            Id = "staff3",
+                            UserId = "user3",
                             contact = "074 226 1505",
                             email = "abelmasingita9@gmail.com",
                             first_name = "Mosesss",
@@ -504,36 +581,36 @@ namespace ClinicManagement.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0b22f10e-91e2-41ed-9a3e-e16ecb1f443e",
-                            ConcurrencyStamp = "8e399332-c82b-4b7c-b7ba-fa79ceabef25",
+                            Id = "67fc0192-ddcf-49bb-a352-02effb48f108",
+                            ConcurrencyStamp = "e63211bc-03cc-457e-8db1-7dbc2bc2ed26",
                             Name = "Administrater",
                             NormalizedName = "ADMINISTRATER"
                         },
                         new
                         {
-                            Id = "f20b914e-a87b-4afe-9f42-4eee9e3098c3",
-                            ConcurrencyStamp = "cd297dbd-2f43-47f4-9831-92c13bc2fc8b",
+                            Id = "4ac37b8b-348a-4d96-949c-23f47a884060",
+                            ConcurrencyStamp = "94bd06a2-b2e7-484c-808e-ebb80a8c85ba",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "630d2435-a603-4c08-8cf3-6349c92a68ac",
-                            ConcurrencyStamp = "563a8653-5f8e-4a1b-a0fb-a11a0d513ba6",
+                            Id = "d29267b7-4f30-420b-bd72-dde14e6e770b",
+                            ConcurrencyStamp = "2b850811-46af-441f-9cf5-8315bd453db4",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         },
                         new
                         {
-                            Id = "d380c1f3-de42-4222-9fe3-f697796e38ff",
-                            ConcurrencyStamp = "617435cb-96ad-4f88-bd94-c4f47768ccf2",
+                            Id = "4b4c6ba3-3b5b-452a-812a-8229561959cb",
+                            ConcurrencyStamp = "90a7f4bd-0727-4e53-94e3-1813fb771377",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
-                            Id = "439b720a-f63f-4f30-b593-190dbbfe2beb",
-                            ConcurrencyStamp = "4cae61a0-5ab3-4717-8cad-ce34e2780323",
+                            Id = "282e0084-99b3-4ce4-8c85-7e60d169d71b",
+                            ConcurrencyStamp = "95d0d32c-a486-4f10-8239-fcc581d1c3d8",
                             Name = "Staff",
                             NormalizedName = "STAFF"
                         });

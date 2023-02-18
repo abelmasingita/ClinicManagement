@@ -29,6 +29,9 @@ namespace ClinicManagement.Data
             modelBuilder.ApplyConfiguration(new DoctorConfiguration());
             modelBuilder.ApplyConfiguration(new PatientConfiguration());
             modelBuilder.ApplyConfiguration(new StaffConfiguration());
+            modelBuilder.ApplyConfiguration(new AppointmentConfiguration());
+            modelBuilder.ApplyConfiguration(new PrescriptionConfiguration());
+            modelBuilder.ApplyConfiguration(new PaymentConfiguration());
 
         }
     }

@@ -1,20 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ClinicManagement.Models
+namespace ClinicManagement.Data.Dto.Appointment
 {
-    public class Appointment
+    public class BaseAppointmentDto
     {
-        public string Id { get; set; }
         public string appointmentDate { get; set; }
         public string status { get; set; }
         public string comment { get; set; }
 
         [ForeignKey(nameof(PatientId))]
         public string PatientId { get; set; }
-        public Patient Patient { get; set; }
 
         [ForeignKey(nameof(DoctorId))]
         public string DoctorId { get; set; }
-        public Doctor Doctor { get; set; }
     }
 }

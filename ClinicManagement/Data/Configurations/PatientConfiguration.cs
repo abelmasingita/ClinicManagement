@@ -17,8 +17,8 @@ namespace ClinicManagement.Data.Configurations
                 email = "hlongwaniabb@gmail.com",
                 dateOfBirth = "20010607",
                 gender = "Male",
-                Id = 1,
-                UserId = "1"
+                Id = "patient1",
+                UserId = "user1"
 
             },
             new Patient
@@ -29,8 +29,8 @@ namespace ClinicManagement.Data.Configurations
                 email = "abelmasingita9@gmail.com",
                 dateOfBirth = "20010607",
                 gender = "Male",
-                Id = 2,
-                UserId = "2"
+                Id = "patient2",
+                UserId = "user2"
             },
             new Patient
             {
@@ -40,8 +40,8 @@ namespace ClinicManagement.Data.Configurations
                 email = "abelmasingita9@gmail.com",
                 dateOfBirth = "20010607",
                 gender = "Male",
-                Id = 3,
-                UserId = "3"
+                Id = "patient3",
+                UserId = "user3"
             });
         }
     }

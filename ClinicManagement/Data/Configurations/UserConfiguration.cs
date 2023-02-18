@@ -17,7 +17,7 @@ namespace ClinicManagement.Data.Configurations
                UserName = "admin@gamil.com",
                Email = "admin@gamil.com",
                PasswordHash = "123456@clinic*",
-               Id = "1"
+               Id = "user1"
 
            }, new ApplicationUser
            {
@@ -26,7 +26,7 @@ namespace ClinicManagement.Data.Configurations
                UserName = "admin2@gamil.com",
                Email = "admin2@gamil.com",
                PasswordHash = "123456@clinic*",
-               Id = "2"
+               Id = "user2"
 
            }, new ApplicationUser
            {
@@ -35,7 +35,7 @@ namespace ClinicManagement.Data.Configurations
                UserName = "admin3gamil.com",
                Email = "admin3@gamil.com",
                PasswordHash = "123456@clinic*",
-               Id = "3"
+               Id = "user3"
            });
 
         }
