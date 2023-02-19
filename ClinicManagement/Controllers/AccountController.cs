@@ -48,7 +48,7 @@ namespace ClinicManagement.Controllers
         {
             var authResposne = await _authManager.Login(loginDto);
 
-            if(authResposne == false)
+            if(authResposne == null)
             {
                 return Unauthorized();
             }
